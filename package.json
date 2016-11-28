@@ -10,8 +10,12 @@
   	"express":"*",
   	"body-parser":"*",
   	"mongoose":"*",
+    "passport":"*",
+    "passport-local":"*",
+    "cookie-parser":"*",
+    "express-session":"*",
     "morgan":"*"
   },
-  "author": "Brad Traversy",
+  "author": "Pujan Parikh",
   "license": "ISC"
 }

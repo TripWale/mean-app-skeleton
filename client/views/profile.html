@@ -1,0 +1,50 @@
+  <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#/">TripWale</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/trips/add">Add Trip</a></li>
+
+           
+
+
+              <li><a href="#/users/profile/{{user._id}}">Welcome {{user.name}}</a></li>
+            
+            
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+<div class="panel panel-default" ng-init="getUser()">
+
+  <div class="panel-body">
+    <div class="row">
+
+      <div class="col-md-8">
+      
+        <ul class="list-group">
+          <li class="list-group-item">username: {{user.username}}</li>
+          <li class="list-group-item">email: {{user.email}}</li>
+          <li class="list-group-item">password: {{user.password}}</li>
+          <li class="list-group-item">Name: {{user.name}}</li>
+        </ul>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pull-right">
+  <a href="#/games/edit/{{game._id}}">Edit</a> |  <a href="#" ng-click="removeGame(game._id)">Delete</a>
+  </div>
+  </div>

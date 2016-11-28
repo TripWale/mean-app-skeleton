@@ -1,0 +1,49 @@
+  <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#/">TripWale</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/trips/add">Add Trip</a></li>
+
+           
+                <li ng-if=""><a href="#/login">Login</a></li>
+                <li ng-hide="currentUser"><a href="#/register">Register</a></li>              
+              <li><a href="#/users/profile/{{user._id}}">Welcome {{user.name}}</a></li>
+            
+            
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <div class="container">
+<div class="panel panel-default" ng-init="getUsers()">
+  <div class="panel-heading">
+    <h3 class="panel-title">Latest Books</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+    	<div ng-repeat="user in users">
+    		<div class="col-md-6">
+    			<div class="col-md-6">
+    				 <h4>Name : {{user.name}}</h4>
+    				<p>Username :{{user.username}}</p>
+                    <p>Email: {{user.email}}</p>
+                    <p>password: {{user.password}}</p>
+
+    				<a class="btn btn-primary" href="#/users/profile/{{user._id}}">View Details</a>
+    			</div>
+
+    		</div>
+    	</div>
+    </div>
+  </div>
+</div>
+</div>

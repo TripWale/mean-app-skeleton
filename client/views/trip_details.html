@@ -1,20 +1,50 @@
-<a href="#/trips">Go Back</a>
-<div ng-init="getTrip()">
+
+  <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#/">TripWale</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/trips/add">Add Trip</a></li>
+
+                    
+        
 
 
+              <li><a href="#/users/profile/{{user._id}}">Welcome {{user.name}}</a></li>
+            
+            
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <div class="container">
+<div class="panel panel-default" ng-init="getTrip()">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{user.name}}</h3>
+  </div>
+  <div class="panel-body">
     <div class="row">
-    <h3 class="panel-title">{{trip.userid}}</h3>
+
       <div class="col-md-8">
+        </p>{{trip.city}}</p>
         <ul class="list-group">
-          <li class="list-group-item">{{trip.places}}</li>
-          <li class="list-group-item">{{trip.city}}</li>
-          <li class="list-group-item">{{trip.rating}}</li>
+          <li class="list-group-item">places: {{trip.sights}}</li>
+          <li class="list-group-item">Start: {{trip.startpoint}}</li>
+          <li class="list-group-item">End: {{trip.endpoint}}</li>
+          <li class="list-group-item">Rating: {{trip.rating}}</li>
         </ul>
+ 
       </div>
     </div>
-
+  </div>
 </div>
 
-<div class="pull-right">
-  <a href="#/trips/edit/{{trip._id}}">Edit</a> |  <a href="#" ng-click="removeTrip(trip._id)">Delete</a>
-  </div>
+</div>

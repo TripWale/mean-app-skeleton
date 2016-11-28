@@ -1,5 +1,28 @@
-<a href="#/trips">Go Back</a>
-<div class="panel panel-default">
+  <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#/">TripWale</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/trips/add">Add Trip</a></li>
+                            
+              <li ngshow="currentUser"><a href="#/users/profile/{{user._id}}">Welcome {{user.name}}</a></li>
+            
+            
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+<div class="container">
+        <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Add Trip</h3>
   </div>
@@ -8,22 +31,26 @@
       <div class="col-md-12">
       <form ng-submit="addTrip()">
         <div class="form-group">
-          <label>serid</label>
-          <input type="text" class="form-control" ng-model="trip.userid" placeholder="Title">
-        </div>
-        <div class="form-group">
           <label>City</label>
           <input type="text" class="form-control" ng-model="trip.city" placeholder="Author">
         </div>
         <div class="form-group">
+          <label>Start Point</label>
+          <input type="text" class="form-control" ng-model="trip.startpoint" placeholder="Publisher">
+        </div>
+        <div class="form-group">
           <label>Trip Places</label>
-          <select multiple ng-model="trip.places" class="form-control">
+          <select multiple ng-model="trip.sights" class="form-control">
             <option value="alcatraz">alcatraz</option>
             <option value="twin peaks">twin peaks</option>
             <option value="downtown">downtown</option>
             <option value="golden gate">golden gate</option>
             <option value="chinatown">chinatown</option>
           </select>
+        </div>
+        <div class="form-group">
+          <label>Endpoints</label>
+          <textarea class="form-control" ng-model="trip.endpoint" placeholder="Description"></textarea>
         </div>
         <div class="form-group">
           <label>Trip rating</label>
@@ -35,14 +62,15 @@
             <option value="5">5</option>
           </select>
         </div>
-
-
-
-
+        <div class="form-group">
+          <label>time</label>
+          <input type="text" class="form-control" ng-model="trip.time" placeholder="Buy URL">
+        </div>
        
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
     </div>
     </div>
   </div>
+      </div>
 </div>
