@@ -8,6 +8,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var longjohn = require('longjohn');
 
 app.use(express.static(__dirname+'/client'));
 app.use(bodyParser.json());
@@ -25,6 +26,9 @@ var db = mongoose.connection;
 Trip = require('./models/trip');
 User = require('./models/user');
 
+if (process.env.NODE_ENV !== 'production'){
+  require('longjohn');
+}
 
 
 // passport
@@ -184,5 +188,8 @@ app.get('/rest/loggedin', function(req, res){
 
 
 
-app.listen(3000);
-console.log('Running on port 3000...');
+ var server = app.listen(process.env.PORT || 3000, function () {
+    var port = server.address().port;
+    console.log("App now running on port", port);
+  });
+

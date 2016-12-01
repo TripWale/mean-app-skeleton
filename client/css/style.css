@@ -1,1 +1,19 @@
-img{width:100%;}
+img{
+	width:100%;
+}
+
+.locationField, #controls {
+        position: relative;
+        
+      }
+      #autocomplete {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 99%;
+      }
+
+      #locationField {
+        height: 20px;
+        margin-bottom: 2px;
+      }

@@ -14,7 +14,9 @@
     "passport-local":"*",
     "cookie-parser":"*",
     "express-session":"*",
-    "morgan":"*"
+    "morgan":"*",
+    "longjohn":"*"
+
   },
   "author": "Pujan Parikh",
   "license": "ISC"

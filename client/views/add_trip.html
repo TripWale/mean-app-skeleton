@@ -1,3 +1,4 @@
+  <script src="/scripts/script.js"></script>
   <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
@@ -32,25 +33,33 @@
       <form ng-submit="addTrip()">
         <div class="form-group">
           <label>City</label>
-          <input type="text" class="form-control" ng-model="trip.city" placeholder="Author">
+          <div class="locationField">
+            <input id="autocomplete" type="text" class="form-control" ng-model="trip.city" placeholder="enter city name to traval">
+          </div>
         </div>
+
         <div class="form-group">
           <label>Start Point</label>
-          <input type="text" class="form-control" ng-model="trip.startpoint" placeholder="Publisher">
         </div>
+
         <div class="form-group">
-          <label>Trip Places</label>
-          <select multiple ng-model="trip.sights" class="form-control">
-            <option value="alcatraz">alcatraz</option>
-            <option value="twin peaks">twin peaks</option>
-            <option value="downtown">downtown</option>
-            <option value="golden gate">golden gate</option>
-            <option value="chinatown">chinatown</option>
+          <label>Start Point</label>
+          <div class="locationField">
+            <input type="text" id="autocomplete2" class="form-control" ng-model="trip.startpoint" placeholder="Enter place">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <p><b>Select multiple places: </b></p>
+          <select multiple ng-model="trip.sights" class="form-control" id="populateplaces">
           </select>
         </div>
         <div class="form-group">
           <label>Endpoints</label>
-          <textarea class="form-control" ng-model="trip.endpoint" placeholder="Description"></textarea>
+          <div class="locationField">
+            <input id="autocomplete3" type="text" class="form-control" ng-model="trip.endpoint" placeholder="Endpoints">
+          </div>
+         
         </div>
         <div class="form-group">
           <label>Trip rating</label>
@@ -74,3 +83,6 @@
   </div>
       </div>
 </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI19wnbHIh6JDz7IanAKOzySUQ_uqrNqo
+&libraries=places&callback=initAutocomplete"
+        async defer></script>

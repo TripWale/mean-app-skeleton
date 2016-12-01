@@ -48,9 +48,6 @@ module.exports.getTrips = function(callback, limit){
 
 // Get Trip
 module.exports.getTripById = function(id, callback){
-	//Trip.findById(id, callback);
-
-
 	Trip.findById(id, callback).populate('_user');
 
 }
