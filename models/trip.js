@@ -17,6 +17,12 @@ var tripSchema = mongoose.Schema({
 	sights:{
 		type: [String]
 	},
+	address:{
+		type: [String]
+	},
+	sightsdetails:{
+		type: [{}]
+	},
 	endpoint:{
 		type: String
 	},

@@ -19,7 +19,8 @@ app.use(passport.session());
 app.use(morgan('dev'))
 
 // Connect to Mongoose
-mongoose.connect('mongodb://pujan:pujan123@ds157987.mlab.com:57987/tripwale');
+//mongoose.connect('mongodb://pujan:pujan123@ds157987.mlab.com:57987/tripwale');
+mongoose.connect('mongodb://localhost/tripwale');
 var db = mongoose.connection;
 
 
@@ -69,9 +70,6 @@ passport.deserializeUser(function(user, done){
 });
 
 
-
-
-
 app.get('/api/trips', function(req, res){
 	Trip.getTrips(function(err, trips){
 		if(err){
@@ -93,6 +91,7 @@ app.get('/api/trips/:_id', function(req, res){
 
 app.post('/api/trips', function(req, res){
 	var trip = req.body;
+	console.log(trip);
 	Trip.addTrip(trip, function(err, trip){
 		if(err){
 			throw err;
