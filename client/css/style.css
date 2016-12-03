@@ -112,3 +112,8 @@ html,body{
   text-decoration: none;
   background-color: rgba(0, 0, 0, 0.9);
 }
+
+.navbar-default {
+    background-color:#000;
+    border-color: #444;
+}

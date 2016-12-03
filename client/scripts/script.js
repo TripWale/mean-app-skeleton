@@ -75,6 +75,7 @@ function initMap() {
     });
     directionsDisplay.setMap(map);
     document.getElementById('showresult').addEventListener('click', function() {
+    	event.preventDefault();
         calculateAndDisplayRoute(directionsService, directionsDisplay);
     });
 }
@@ -113,7 +114,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
                 console.log(route.legs[i]);
 
 
-                
+
             }
         } else {
             window.alert('Directions request failed due to ' + status);
