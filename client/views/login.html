@@ -23,29 +23,18 @@
     </nav>
 
 
-    <div class="container">
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Add user</h3>
-  </div>
-  <div class="panel-body">
-    <div class="row">
-      <div class="col-md-12">
-      <form ng-submit="loginUser()">
-        <div class="form-group">
-          <label>Username</label>
-          <input type="text" class="form-control" ng-model="user.username" placeholder="user">
-        </div>
-        <div class="form-group">
-          <label>Password</label>
-          <input type="text" class="form-control" ng-model="user.password" placeholder="password">
-        </div>
-    
-       
-        <button type="submit" class="btn btn-default">Login</button>
-      </form>
-    </div>
-    </div>
-  </div>
+<div class="container">
+  <div class="login-container">
+      <div id="output"></div>
+      <div class="avatar"></div>
+      <div class="form-box">
+        <form ng-submit="loginUser()">
+            <input name="user" type="text"  class="form-control" ng-model="user.username" placeholder="username">
+            <input type="password" placeholder="password" class="form-control" ng-model="user.password">
+            <button class="btn btn-info btn-block login" type="submit">Login</button><br>
+            <h4> Dont have an acoount? <a href="#/register"> <br>Register here </a> </h4>
+        </form>
+      </div>
+   </div>
 </div>
-</div>
+

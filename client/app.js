@@ -67,7 +67,7 @@ var checkLoggedin = function($q, $timeout, $http, $location, $rootScope)
 
 				currentUser = null;
 				window.location.href='#/login';
-				alert("please login to access that page");
+				sweetAlert("please login to access that page");
 				deferred.reject();
 			}
 		});
