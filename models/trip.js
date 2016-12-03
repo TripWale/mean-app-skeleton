@@ -58,13 +58,11 @@ module.exports.addTrip = function(trip, callback){
 }
 
 
-module.exports.addUser = function(user, callback){
-	User.create(user, callback);
+module.exports.getTripsbyUser = function(id, callback){
+	console.log("id - " +id);
+	Trip.find({ '_user': id}, callback);
 }
 
-module.exports.getUser = function(callback, limit){
-	User.find(callback).limit(limit);
-}
 
 
 // Update Trip
