@@ -33,18 +33,30 @@
       <div class="col-md-8">
       
         <ul class="list-group">
-          <li class="list-group-item">username: {{user.username}}</li>
-          <li class="list-group-item">email: {{user.email}}</li>
-          <li class="list-group-item">password: {{user.password}}</li>
-          <li class="list-group-item">Name: {{user.name}}</li>
+          <li class="list-group-item">username: {{user.user.username}}</li>
+          <li class="list-group-item">email: {{user.user.email}}</li>
+          <li class="list-group-item">password: {{user.user.password}}</li>
+          <li class="list-group-item">Name: {{user.user.name}}</li>
         </ul>
        
+
+        <div ng-repeat="trip in user.trips">
+        <div class="col-md-6">
+          <div class="col-md-6">
+            <h4>{{trip.city}}</h4>
+            <p>{{trip.startpoint}}</p>
+            <p>{{trip.sights}}</p>
+            <p>{{trip.endpoints}}</p>
+            <p>{{trip.time}}</p>
+            <p>{{trip.rating}}</p>
+            <a class="btn btn-primary" href="#/trips/details/{{trip._id}}">View Details</a>
+          </div>
+
+        </div>
+      </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="pull-right">
-  <a href="#/games/edit/{{game._id}}">Edit</a> |  <a href="#" ng-click="removeGame(game._id)">Delete</a>
-  </div>
   </div>
