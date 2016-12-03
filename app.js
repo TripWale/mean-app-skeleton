@@ -141,7 +141,15 @@ app.get('/api/users/:_id', function(req, res){
 		if(err){
 			throw err;
 		}
-		res.json(user);
+		Trip.getTripsbyUser(req.params._id, function(err, trips){
+			if(err){
+				throw err;
+			}
+			console.log("trips = " +trips);
+			res.json({user: user, trips: trips});
+
+		})
+		
 	});
 });
 
