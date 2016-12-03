@@ -74,8 +74,8 @@
         </div>
 
        
-        <button type="submit" onclick="processwaypoints()" ng-click="addTrip()"  class="btn btn-default">Plan this trip</button>
-        <button  id="showresult" class="btn btn-default">Get directions</button>
+        
+        <button onclick="processwaypoints()"  id="showresult" class="btn btn-default">Get directions</button>
       </form>
     </div>
     </div>
@@ -83,11 +83,28 @@
       </div>
 </div>
 
-<div class="container">
-   <div id="map"></div>
-</div>
 
 <div class="container">
+<div class="jumbotron" id="mapcontainer">
+   <div id="map"></div>
+</div> 
+</div>
+
+<div class="jumbotron">
+<div class="container">
+
+
+
+<h3> You will be goin to these places.. </h3>
+
+<div id="populateplacedetails">
+  
+</div>
+
+</div></div>
+
+<div class="container">
+  <button type="submit"  ng-click="addTrip()"  class="btn btn-default">Plan this trip</button>
    <div class="col-md-12" id="directions-panel"></div>
 </div>
 

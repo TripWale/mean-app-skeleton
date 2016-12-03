@@ -18,12 +18,29 @@ img{
         margin-bottom: 2px;
       }
 
-            #directions-panel {
+      #directions-panel {
         margin-top: 10px;
         background-color: #FFEE77;
         padding: 10px;
       }
 
+#mapcontainer{
+  border:1px solid #021a40;
+}
+
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+    background-color: #CCC;
+    margin-bottom: 25px;
+}
+
+/* Add rounded corners to the top left and the top right corner of the image */
+img {
+    border-radius: 5px;
+}
 
 body{
   background: url(https://i.imgur.com/i2xiBc7.jpg) no-repeat top right;
@@ -36,6 +53,7 @@ html,body{
       #map {
         height: 100%;
         width: 100%;
+        border:1px solid #021a40;
         
       }
 
@@ -85,6 +103,8 @@ html,body{
     transition:0.2s ease-in-out;
 
 }
+
+
 
 .form-box input:focus{
     outline: 0;

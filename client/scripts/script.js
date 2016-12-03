@@ -4,7 +4,7 @@ var places;
 var total_time;
 var outputstr;
 var sightsdetails;
-
+var timeformat = new Date(null);
 
 
 function processwaypoints(){
@@ -14,15 +14,30 @@ function processwaypoints(){
     console.log(checkboxArray.length);
     for (var i = 0; i < checkboxArray.length; i++) {
         if (checkboxArray.options[i].selected) {
-          //sightsdetailsarray.push(outputstr.response.groups[0].items[i].venue);
+                    
+                     phototemp = outputstr.response.groups[0].items[i].venue.photos.groups[0].items[0].prefix
+                        + "original" + 
+                        outputstr.response.groups[0].items[i].venue.photos.groups[0].items[0].suffix;
+
+
+
+                $( "#populateplacedetails" ).append(
+                    '<div class="col-lg-3 col-md-4 col-sm-6"><div class="card"><img src="' + phototemp + 
+                    '" style="width:100%"><div class="container"> <h4> <b> ' + 
+                    outputstr.response.groups[0].items[i].venue.name +
+                    '</b></h4><hr><p>Category:' +
+                    outputstr.response.groups[0].items[i].venue.categories[0].name +
+                    '</p></div></div></div>'
+
+                );
 
 
               sightsdetailsarray.push({
-                "name"  : outputstr.response.groups[0].items[i].venue.name,
-                "lat"   : outputstr.response.groups[0].items[i].venue.location.lat,
-                "long"  : outputstr.response.groups[0].items[i].venue.location.lng,
+                "name"     : outputstr.response.groups[0].items[i].venue.name,
+                "lat"      : outputstr.response.groups[0].items[i].venue.location.lat,
+                "long"     : outputstr.response.groups[0].items[i].venue.location.lng,
                 "category" : outputstr.response.groups[0].items[i].venue.categories[0].name,
-                "photo" : outputstr.response.groups[0].items[i].venue.photos.groups[0].items[0].prefix + "original" + outputstr.response.groups[0].items[i].venue.photos.groups[0].items[0].suffix
+                "photo"    : phototemp
 
               }); 
         }
@@ -101,8 +116,12 @@ function initMap() {
         center: {
             lat: 37.332716,
             lng: -121.882374
+
+
             
         },
+        styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#c5c6c6"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#e4d7c6"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#fbfaf7"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]}]
+
     });
     directionsDisplay.setMap(map);
     document.getElementById('showresult').addEventListener('click', function() {
@@ -153,7 +172,12 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 
             }
 
-            console.log(total_time);
+
+                timeformat.setSeconds(total_time); // specify value for SECONDS here
+                timeformat.toISOString().substr(11, 8);
+                //sweetAlert(timeformat);
+
+            
         } else {
             window.alert('Directions request failed due to ' + status);
         }

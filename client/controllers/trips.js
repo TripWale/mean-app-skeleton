@@ -1,6 +1,7 @@
 var myApp = angular.module('myApp');
 var currentUser;
 
+
 myApp.controller('TripsController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
 	console.log('TripsController loaded...');
 
@@ -26,10 +27,29 @@ myApp.controller('TripsController', ['$scope', '$http', '$location', '$routePara
 		$scope.trip.startpoint    = document.getElementById("autocomplete2").value;
 		$scope.trip.endpoint      = document.getElementById("autocomplete3").value;
 		$scope.trip.sightsdetails = sightsdetails;
+		$scope.trip.time 		  = total_time;
+
 
 
 		$http.post('/api/trips/', $scope.trip).success(function(response){
-			window.location.href='#/trips';
+			sweetAlert({
+				  title: "Are you sure?",
+				  text: "You will not be able to recover this imaginary file!",
+				  type: "warning",
+				  showCancelButton: true,
+				  confirmButtonColor: "#DD6B55",
+				  confirmButtonText: "Yes, delete it!",
+				  cancelButtonText: "No, cancel plx!",
+				  closeOnConfirm: false,
+				  closeOnCancel: false
+				},
+				function(isConfirm){
+				  if (isConfirm) {
+				    swal("Deleted!", "Your imaginary file has been deleted.", "success");
+				  } else {
+				    swal("Cancelled", "Your imaginary file is safe :)", "error");
+				  }
+				});
 		});
 	}
 
@@ -80,7 +100,7 @@ myApp.controller('UsersController', ['$q','$scope', '$http', '$location', '$rout
 
 			}
 			else{
-				alert("username already exists");
+				sweetAalert("username already exists");
 			}
 		});
 	}
@@ -90,7 +110,7 @@ myApp.controller('UsersController', ['$q','$scope', '$http', '$location', '$rout
 		$http.post('/api/users/login', $scope.user).success(function(response){
 			
 			if (response == null) {
-				alert("incorrect username or password");
+				sweetAlert("incorrect username or password");
 			}
 			else{
 				var id = response._id
