@@ -21,10 +21,11 @@ myApp.controller('TripsController', ['$scope', '$http', '$location', '$routePara
 
 	$scope.addTrip = function(){
 		console.log(currentUser.name);
-		$scope.trip._user      = currentUser._id;
-		$scope.trip.city       = document.getElementById("autocomplete").value;
-		$scope.trip.startpoint = document.getElementById("autocomplete2").value;
-		$scope.trip.endpoint   = document.getElementById("autocomplete3").value;
+		$scope.trip._user         = currentUser._id;
+		$scope.trip.city          = document.getElementById("autocomplete").value;
+		$scope.trip.startpoint    = document.getElementById("autocomplete2").value;
+		$scope.trip.endpoint      = document.getElementById("autocomplete3").value;
+		$scope.trip.sightsdetails = sightsdetails;
 
 
 		$http.post('/api/trips/', $scope.trip).success(function(response){

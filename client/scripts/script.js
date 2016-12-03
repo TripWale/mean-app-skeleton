@@ -1,6 +1,37 @@
 var typingTimer;  //timer identifier
 var doneTypingInterval = 2000;
 var places;
+var total_time;
+var outputstr;
+var sightsdetails;
+
+
+
+function processwaypoints(){
+    var waypts = [];
+    var sightsdetailsarray = [];
+    var checkboxArray = document.getElementById('populateplaces');
+    console.log(checkboxArray.length);
+    for (var i = 0; i < checkboxArray.length; i++) {
+        if (checkboxArray.options[i].selected) {
+          //sightsdetailsarray.push(outputstr.response.groups[0].items[i].venue);
+
+
+              sightsdetailsarray.push({
+                "name"  : outputstr.response.groups[0].items[i].venue.name,
+                "lat"   : outputstr.response.groups[0].items[i].venue.location.lat,
+                "long"  : outputstr.response.groups[0].items[i].venue.location.lng,
+                "category" : outputstr.response.groups[0].items[i].venue.categories[0].name,
+                "photo" : outputstr.response.groups[0].items[i].venue.photos.groups[0].items[0].prefix + "original" + outputstr.response.groups[0].items[i].venue.photos.groups[0].items[0].suffix
+
+              }); 
+        }
+    }
+    sightsdetails = sightsdetailsarray;
+    console.log(sightsdetails);
+
+}
+
 
 
 function initialize() {
@@ -41,20 +72,20 @@ function processurl(){
             var url = "https://api.foursquare.com/v2/venues/explore?near="+ str + "&venuePhotos=1&radius=100000&v=20161117&query=hike&m=foursquare&client_secret=L1J2NHSD3UK4ZAHH2JRGUQXHMED41PH3YOCYAMJS1GYARFJE&client_id=OI0JUH3OU4C0GM20F1CTT40Y1R5TBRXWTHQPJJQD4PKFFKKX";
 			
 			$.getJSON(url, function(jsonresult){
-				outputstr = JSON.stringify(jsonresult, null, 4); 
+				outputstr = jsonresult;
 		        for(i=0; i<jsonresult.response.groups[0].items.length; i++){
 		        	$("#populateplaces").append(
-		        		'<option value="' + jsonresult.response.groups[0].items[i].venue.name + ", " + jsonresult.response.groups[0].items[i].venue.location.city +
-		        		'">'+
+		        		'<option value="' + jsonresult.response.groups[0].items[i].venue.name +  ", " + jsonresult.response.groups[0].items[i].venue.location.city +
+		        		'">' +
 		        		jsonresult.response.groups[0].items[i].venue.name +  ", " + jsonresult.response.groups[0].items[i].venue.location.city +
 		        		'</option>'
 
 
 		        	);
 
-		        	console.log(jsonresult.response.groups[0].items[i].venue.name +  ", " + jsonresult.response.groups[0].items[i].venue.location.city);
+		        	
 		        }
-			});        
+			}).error(function() { sweetAlert("Cannot find the place"); });        
 		};
 
 
@@ -82,12 +113,16 @@ function initMap() {
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     var waypts = [];
+    
     var checkboxArray = document.getElementById('populateplaces');
     for (var i = 0; i < checkboxArray.length; i++) {
         if (checkboxArray.options[i].selected) {
+            
             waypts.push({
                 location: checkboxArray[i].value,
                 stopover: true
+
+
             });
         }
     }
@@ -99,6 +134,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         travelMode: 'DRIVING'
     }, function(response, status) {
         if (status === 'OK') {
+            total_time = 0;
             directionsDisplay.setDirections(response);
             var route = response.routes[0];
             var summaryPanel = document.getElementById('directions-panel');
@@ -113,9 +149,11 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
                 summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
                 console.log(route.legs[i]);
 
-
+                total_time += route.legs[i].duration.value;
 
             }
+
+            console.log(total_time);
         } else {
             window.alert('Directions request failed due to ' + status);
         }

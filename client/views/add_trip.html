@@ -72,12 +72,9 @@
             <option value="5">5</option>
           </select>
         </div>
-        <div class="form-group">
-          <label>time</label>
-          <input type="text" class="form-control" ng-model="trip.time" placeholder="Buy URL">
-        </div>
+
        
-        <button type="submit" ng-click="addTrip()"  class="btn btn-default">Plan this trip</button>
+        <button type="submit" onclick="processwaypoints()" ng-click="addTrip()"  class="btn btn-default">Plan this trip</button>
         <button  id="showresult" class="btn btn-default">Get directions</button>
       </form>
     </div>
